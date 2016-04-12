@@ -1,4 +1,4 @@
- angular.module('weatherApp').
+var weatherAppControllers= angular.module('weatherAppControllers',[]).
  controller('weatherController', ['$scope', '$window', '$log', 'ipApi', 'weatherWallpaper', 'loadController', 'apiService', function($scope, $window, $log, ipApi, weatherWallpaper, loadController, apiService) {
      ipApi.getCurrentLocation(function(result) {
          $scope.setWeatherForLocation(result);

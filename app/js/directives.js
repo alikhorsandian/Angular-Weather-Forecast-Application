@@ -1,4 +1,4 @@
-weatherApp.directive('forecastPanel', function() {
+var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('forecastPanel', function() {
     return {
         restrict: 'E',
         templateUrl: 'html/forecast-panel.html',
