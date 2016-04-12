@@ -1,0 +1,16 @@
+<div class="smallDay" ng-class="{active:active}">
+    <h2>
+        {{weatherInfo.date | date:'EEE'}}
+    </h2>
+    <img alt="Image" class="img-responsive" ng-src={{weatherIcon(weatherInfo.weatherID)}} width="92px">
+        <h1>
+            {{convert(weatherInfo.temp) | number:0}}
+            <span class="type" ng-show="isItC">
+                °C
+            </span>
+            <span class="type" ng-hide="isItC">
+                °F
+            </span>
+        </h1>
+    </img>
+</div>

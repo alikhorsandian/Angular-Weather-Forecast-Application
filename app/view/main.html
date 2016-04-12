@@ -1,0 +1,55 @@
+
+<!-- main slide includes search, current weather and weather forecast -->
+<div class="mobile">
+    <h1>this page is not optimized for mobile screen please use a computer</h1>
+</div>
+<div class="main" ng-controller="page">
+    <!-- navbar with search form -->
+    <div class="nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-8">
+                    <search-form callback="setWeatherForCity">
+                    </search-form>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="focus" ng-cloak>
+            <div image-frame class = "frame" image-source="{{weatherWallpaper}}" dimension="frameDimension" ></div>
+            <div class="information" >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h2>
+                                {{today.city}},
+                            </h2>
+                            <h2>
+                                {{today.date |date:'EEE dd/MM/yyyy'}}
+                            </h2>
+                        </div>
+                        <div class="col-md-4">
+                            <weather-panel is-c="isItC" weather="today">
+                            </weather-panel>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+         <!-- showing the six weather forecast -->
+        <div class="forecast" dimension="forecastDimension" ng-cloak>
+            <div class="view">
+                <div class="container">
+                    <div class="row">
+                        <div class="slides">
+                            <div class="col-md-2 noPadding" ng-repeat="day in forecast | limitTo:6:0">
+                                <forecast-panel active="{{(selectedForecast==$index)?'true':''}}" is-c="isItC" ng-click="setToday($index)" weather="day">
+                                </forecast-panel>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

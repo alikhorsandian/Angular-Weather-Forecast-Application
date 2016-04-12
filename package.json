@@ -1,0 +1,15 @@
+{
+    "name": "weatherForecast",
+    "version": "1.0.0",
+    "description": "an angular project",
+    "devDependencies": {
+        "puer": "~1.1.1",
+        "bower": "^1.3.1"
+    },
+    "scripts": {
+        "postinstall": "bower install && puer install",
+        "start": "puer -d app/"
+    },
+    "author": "Ali Khorsandian",
+    "license": "ISC"
+}

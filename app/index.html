@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="weatherApp" ng-controller="loadController">
+<head>
+
+	<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	
+
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+ 
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- meta screen-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	 
+
+	<title>Weather App</title>
+</head>
+<body>
+
+	<div class="loading" ng-show="isLoading">
+		<div class="message">
+		<h1>LOADING</h1>
+		<div class="loader"></div>
+		</div>
+	</div>
+
+	<div class="loading" ng-show="Error.status" ng-cloak>
+		<div class="message">
+		<h1>{{Error.message}}</h1>
+		<div class="loader"></div>
+		</div>
+	</div>
+
+ 
+	<!-- <div class= "nav"></div> -->
+	<div ng-view></div>
+	<!-- <div class="footer"></div> -->
+	
+
+
+
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.js" crossorigin="anonymous"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controller.js"></script>
+	<script src="js/directives.js"></script>
+	<script src="js/services.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCekM-EaR1jVsCXP5YxerEdS33ETR2Nlw&libraries=places"></script>
+	 
+</body>
+</html>

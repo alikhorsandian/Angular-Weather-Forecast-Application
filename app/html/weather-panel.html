@@ -1,0 +1,23 @@
+<div class="today">
+    <img alt="Image" class="img-responsive" height="80px" ng-src={{weatherIcon(weatherInfo.weatherID)}} width="92px">
+        <h1>
+            {{convert(weatherInfo.temp) | number:0 }}
+        </h1>
+        <span class="tempC" ng-class="{active:isItC}" ng-click="setToC()">
+            °C
+        </span>
+        |
+        <span class="tempF" ng-class="{active:!isItC}" ng-click="setToF()">
+            °F
+        </span>
+        <h2>
+            wind: {{weatherInfo.windSpeed}} km/h
+        </h2>
+        <h2>
+            Humidity: {{weatherInfo.humidity}}%
+        </h2>
+        <h2>
+            UV Index: 10
+        </h2>
+    </img>
+</div>

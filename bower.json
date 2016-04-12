@@ -1,0 +1,12 @@
+{
+    "name": "weatherForecast",
+    "description": "an angular project",
+    "version": "1.0.0",
+    "dependencies": {
+        "angular": "1.5.x",
+        "angular-resource": "1.5.x",
+        "angular-route": "1.5.x",
+        "jquery": "~2.1.1",
+        "bootstrap": "~3.1.1"
+    }
+}
