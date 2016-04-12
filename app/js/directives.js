@@ -1,7 +1,7 @@
 var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('forecastPanel', function() {
     return {
         restrict: 'E',
-        templateUrl: 'html/forecast-panel.html',
+        templateUrl: 'partials/forecast-panel.html',
         scope: {
             weatherInfo: '=weather',
             isItC: '=isC',
@@ -18,7 +18,7 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
 }).directive('weatherPanel', function() {
     return {
         restrict: 'E',
-        templateUrl: 'html/weather-panel.html',
+        templateUrl: 'partials/weather-panel.html',
         scope: {
             weatherInfo: '=weather',
             isItC: '=isC'
@@ -39,7 +39,7 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
 }).directive('searchForm', function($log) {
     return {
         restrict: 'E',
-        templateUrl: 'html/search-form.html',
+        templateUrl: 'partials/search-form.html',
         scope: {
             callback: '='
         },
@@ -74,7 +74,7 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
             imageSource: '@',
             dimension: '='
         },
-        templateUrl: 'html/image-frame.html',
+        templateUrl: 'partials/image-frame.html',
         link: function(scope, element, attrs) {
             scope.$watchGroup(['dimension.width', 'dimension.height'], function() {
                 scope.frameRatio = scope.dimension.width / scope.dimension.height;
@@ -122,7 +122,7 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
 }).directive('loadingPage', function(loadController,$log) {
     return {
         restrict: 'E',
-        templateUrl: 'html/loading-page.html',
+        templateUrl: 'partials/loading-page.html',
         link: function(scope, element, attr) {
             
              
