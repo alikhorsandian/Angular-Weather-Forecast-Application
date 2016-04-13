@@ -22,9 +22,9 @@ factory('apiService', ['$resource', '$log', function($resource, $log) {
         }
     });
     return {
-        queryCity: function(cityName = '', location = '', callbackFunction, callbackError = function(error) {}) {
-            var result = {};
-            var query = {};
+        queryCity: function(cityName , location , callbackFunction, callbackError) {
+            var result = {}
+            var query = {}
             if (cityName != '') query = {
                 q: cityName
             }
@@ -48,7 +48,7 @@ factory('apiService', ['$resource', '$log', function($resource, $log) {
                 callbackError(error);
             });
         },
-        queryForecast: function(cityName = '', location = '', callbackFunction = '', callbackError = function(error) {}) {
+        queryForecast: function(cityName , location , callbackFunction, callbackError ) {
             var result = [];
             var query = {};
             if (cityName != '') query = {
@@ -81,7 +81,7 @@ factory('apiService', ['$resource', '$log', function($resource, $log) {
 factory('ipApi', ['$resource', function($resource) {
     var res = $resource('http://ip-api.com/json/');
     return {
-        getCurrentLocation: function(callbackFunction,callbackError=function(error){}) {
+        getCurrentLocation: function(callbackFunction,callbackError ) {
             var result = {};
             res.get(function(data) {
                 result = {

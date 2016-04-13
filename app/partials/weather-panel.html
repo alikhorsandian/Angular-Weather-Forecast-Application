@@ -17,7 +17,22 @@
             Humidity: {{weatherInfo.humidity}}%
         </h2>
         <h2>
-            UV Index: 10
+            Min: {{convert(weatherInfo.tempMin) | number:0}}
+            <span class="type" ng-show="isItC">
+                °C
+            </span>
+            <span class="type" ng-hide="isItC">
+                °F
+            </span>
+        </h2>
+        <h2>
+            Max: {{convert(weatherInfo.tempMax) | number:0}}
+            <span class="type" ng-show="isItC">
+                °C
+            </span>
+            <span class="type" ng-hide="isItC">
+                °F
+            </span>
         </h2>
     </img>
 </div>

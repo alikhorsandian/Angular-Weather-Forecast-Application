@@ -146,8 +146,13 @@ body, h1, h2 {
 .today h2 {
     font-size: 26px;
     clear: left;
+    position: relative;
 }
-
+.today h2 .type{
+    position: absolute;
+    font-size: 10px;
+    bottom: 20px;
+}
 .forecast {
     min-height: 250px;
     background-color: grey;
