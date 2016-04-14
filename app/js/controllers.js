@@ -4,7 +4,19 @@ controller('weatherController', ['$scope', '$window', '$log', 'ipApi', 'weatherW
     Uses ip-api(ipApi service) and openweathermap(apiService) to extract and maintain weather data based on users current location or searched cities. 
      */
 
-
+     /*
+     weather model
+        {
+            temp: ,
+            humidity: ,
+            tempMin: ,
+            tempMax: ,
+            windSpeed: ,
+            weatherID: ,
+            date: ,
+            city: 
+        }
+      */
 
     ipApi.getCurrentLocation(function(result) {
         $scope.setWeatherForLocation(result);

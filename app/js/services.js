@@ -1,5 +1,9 @@
 var weatherAppServices = angular.module('weatherAppServices', ['ngResource']).
 factory('apiService', ['$resource', '$log', function($resource, $log) {
+    /*
+    getting weather model from the server and convert it to the weather appmodel.
+     */
+
     var appID = 'ec2c219b7a1e77e72c42859f75e5a345';
     // appID="asdfas";
     var res = $resource('http://api.openweathermap.org/data/2.5/:c/:d', {
@@ -17,11 +21,28 @@ factory('apiService', ['$resource', '$log', function($resource, $log) {
             params: {
                 c: 'forecast',
                 d: 'daily',
-                cnt: 7
+                cnt: 6
             }
         }
     });
     return {
+        /**
+         * gets todays weather data based on either location (lat,lon) or the cityName          
+         * @param  {[type:string]} cityName         
+         * @param  {type:{lat:latitude,lon:longitude}} location 
+         * @param  {function(result){}} callbackFunction [use a callback function to return the converted model]
+         * @param  {function(error){}} callbackError    [use a callback fucntion to return the error data]
+         * @result: {
+            temp: ,
+            humidity: ,
+            tempMin: ,
+            tempMax: ,
+            windSpeed: ,
+            weatherID: ,
+            date: ,
+            city: 
+        }                
+         */
         queryCity: function(cityName , location , callbackFunction, callbackError) {
             var result = {}
             var query = {}
@@ -48,6 +69,23 @@ factory('apiService', ['$resource', '$log', function($resource, $log) {
                 callbackError(error);
             });
         },
+        /**
+         * gets todays weather forecast data for 6 days in an array format based on either location (lat,lon) or the cityName          
+         * @param  {[type:string]} cityName         
+         * @param  {type:{lat:latitude,lon:longitude}} location 
+         * @param  {function(result){...}} callbackFunction [use a callback function to return the converted model]
+         * @param  {function(error){...}} callbackError    [use a callback fucntion to return the error data]
+         * @result: array[{
+            temp: ,
+            humidity: ,
+            tempMin: ,
+            tempMax: ,
+            windSpeed: ,
+            weatherID: ,
+            date: ,
+            city: 
+        },...]}                 
+         */
         queryForecast: function(cityName , location , callbackFunction, callbackError ) {
             var result = [];
             var query = {};
@@ -81,6 +119,22 @@ factory('apiService', ['$resource', '$log', function($resource, $log) {
 factory('ipApi', ['$resource', function($resource) {
     var res = $resource('http://ip-api.com/json/');
     return {
+        /**
+         * uses ip-api to get current user location based on the its ip. 
+         * @param  {function(data){...}} callbackFunction 
+         * @param  {function(error){...}} callbackError   
+         * @data :{
+         *          country:  ,
+                    countryCode: ,
+                    isp:  ,
+                    lat:  ,
+                    lon:  ,
+                    ip:  ,
+                    region:  ,
+                    city:  ,
+                    timezone:  
+         * }                   
+         */
         getCurrentLocation: function(callbackFunction,callbackError ) {
             var result = {};
             res.get(function(data) {
@@ -102,6 +156,11 @@ factory('ipApi', ['$resource', function($resource) {
         }
     }
 }]).factory('weatherIcon', function() {
+    /**
+     * gets the url for the weather condition icons.
+     * @param  {[type:int]} picId  weather id defining the weather condition.
+     * @return {type:string}       url for the image. 
+     */ 
     function getIconAddress(picId) {
         //rain snow cloud thunderstorm clear
         if (picId <= 232) return 'img/thunderstorm.png';
@@ -113,6 +172,11 @@ factory('ipApi', ['$resource', function($resource) {
     }
     return getIconAddress;
 }).factory('weatherWallpaper', function() {
+    /**
+     * gets a wallpaper based on weather id
+     * @param  {[type:int]} picId weather-id defining the weather condition. 
+     * @return {[type:string]}       image url for wallpaper. 
+     */
     function getWallpaperAddress(picId) {
         if (picId <= 232) return 'img/thunderstorm-wp.jpg';
         else if (picId <= 531) return 'img/rain-wp.jpg';
