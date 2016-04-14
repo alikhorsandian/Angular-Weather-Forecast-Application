@@ -1,5 +1,9 @@
 var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('forecastPanel', function() {
     return {
+        /*
+        Shows small box with weather inforamtion 
+         */
+
         restrict: 'E',
         templateUrl: 'partials/forecast-panel.html',
         scope: {
@@ -17,6 +21,10 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
     }
 }).directive('weatherPanel', function() {
     return {
+        /*
+        Indicates weather information with more data
+         */
+
         restrict: 'E',
         templateUrl: 'partials/weather-panel.html',
         scope: {
@@ -38,6 +46,10 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
     }
 }).directive('searchForm', function($log) {
     return {
+
+        /*
+        this directive uses google maps autocomplete apis to suggest cities. 
+         */
         restrict: 'E',
         templateUrl: 'partials/search-form.html',
         scope: {
@@ -69,11 +81,16 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
     }
 }).directive('imageFrame', function() {
     return {
+
+        /*
+        creates a frame to crop some part of the image. 
+         */
         restrict: 'AE',
         scope: {
             imageSource: '@',
             dimension: '='
         },
+        
         templateUrl: 'partials/image-frame.html',
         link: function(scope, element, attrs) {
             scope.$watchGroup(['dimension.width', 'dimension.height'], function() {
@@ -87,20 +104,29 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
     }
 }).directive('adjustImage', function($log,$window) {
     return {
+        /*
+        gets origial image dimension. creates image ratio and compare it with its frame ratio to resize the image to fit perfectly in the
+        frame with keeping the original image ratio. 
+         */
         restrict: 'A',
         link: function(scope, element, attrs, frameCtrl) {
-            var newImg = new Image();
+            
             scope.imgRatio = 0;
+
+            //getting original image dimensions. 
+            var newImg = new Image();
             newImg.onload = function() {
                 scope.imgRatio = newImg.width / newImg.height;
                 scope.$apply();
             }
-            $log.log('image source:'+scope.imageSource);
             scope.$watch('imageSource',function(){
                 if(scope.imageSource)
                     newImg.src = scope.imageSource;
             });
-             
+            ///end 
+         
+            
+            //scaling the image to fit it into its frame (img-frame)
             scope.$watchGroup(['imgRatio', 'frameRatio'], function() {
                 $log.log('im here: ' + scope.imgRatio + " " + scope.frameRatio+' '+angular.element($window).width());
                 if (scope.imgRatio != 0) {
