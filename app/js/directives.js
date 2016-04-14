@@ -85,7 +85,7 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
             });
         }
     }
-}).directive('adjustImage', function($log) {
+}).directive('adjustImage', function($log,$window) {
     return {
         restrict: 'A',
         link: function(scope, element, attrs, frameCtrl) {
@@ -102,9 +102,11 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
             });
              
             scope.$watchGroup(['imgRatio', 'frameRatio'], function() {
-                $log.log('im here: ' + scope.imgRatio + " " + scope.frameRatio);
+                $log.log('im here: ' + scope.imgRatio + " " + scope.frameRatio+' '+angular.element($window).width());
                 if (scope.imgRatio != 0) {
+                    
                     if (scope.imgRatio < scope.frameRatio) {
+
                         element.css({
                             width: '100%',
                             height: 'auto'

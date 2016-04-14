@@ -2,15 +2,15 @@
     <h2>
         {{weatherInfo.date | date:'EEE'}}
     </h2>
-    <img alt="Image" class="img-responsive" ng-src={{weatherIcon(weatherInfo.weatherID)}} width="92px">
-        <h1>
-            {{convert(weatherInfo.temp) | number:0}}
+    <img alt="Image" class="img-responsive" ng-src={{weatherIcon(weatherInfo.weatherID)}}>
+        <div class="temps">
+            <h2>{{convert(weatherInfo.temp) | number:0}}</h2>
             <span class="type" ng-show="isItC">
                 °C
             </span>
             <span class="type" ng-hide="isItC">
                 °F
             </span>
-        </h1>
+        </div>
     </img>
 </div>

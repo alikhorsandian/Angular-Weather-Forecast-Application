@@ -34,9 +34,12 @@ body, h1, h2 {
 }
 
 .nav {
+    top: 0px;
+    width: 100%;
     height: 50px;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    z-index: 100;
+    position: absolute;
 }
 
 
@@ -108,9 +111,13 @@ body, h1, h2 {
     position: relative;
 }
 
+.focus .frame {
+    min-height: 650px;
+}
+
 .information {
     position: absolute;
-    top: 30px;
+    top: 80px;
     width: 100%;
 }
 
@@ -119,6 +126,8 @@ body, h1, h2 {
 }
 
 .today {
+    position: absolute;
+    right: 20px;
     height: 300px;
     width: 275px;
     background-color: black;
@@ -148,20 +157,25 @@ body, h1, h2 {
     clear: left;
     position: relative;
 }
-.today h2 .type{
+
+.today h2 .type {
     position: absolute;
     font-size: 10px;
     bottom: 20px;
 }
+
 .forecast {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
     min-height: 250px;
-    background-color: grey;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px 0px 20px 0px;
 }
 
 .smallDay {
     height: 210px;
     background-color: black;
-    margin-top: 20px;
     color: white;
     text-align: center;
     padding: 5px 0px 0px 0px;
@@ -180,23 +194,82 @@ body, h1, h2 {
 }
 
 .smallDay img {
+    width: 92px;
     margin: auto;
     margin-top: -20px;
 }
 
-.smallDay h1 {
+.smallDay .temps {
     margin-top: 10px;
     position: relative;
+    width: 50px;
+    margin: auto;
 }
 
 .smallDay .type {
     position: absolute;
     font-size: 10px;
     bottom: 30px;
+    right: 0px;
 }
+
+
+/*test*/
+
+
+/*end of test*/
 
 .noPadding {
     padding: 0 !important;
+}
+
+@media screen and (max-width:990px) {
+    .forecast {
+        min-height: 150px;
+    }
+    .focus .frame {
+        /*min-height: 650px;*/
+    }
+    .smallDay {
+        height: 130px;
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 5px 0px 0px 0px;
+        border-color: grey;
+        border-style: solid;
+        border-width: 1px;
+    }
+    .smallDay img {
+        width: 42px;
+        margin: auto;
+    }
+    .smallDay .temps {
+        font-size: 5px margin-bottom: 10px;
+        position: relative;
+        width: 50px;
+        margin: auto;
+    }
+    .smallDay > h2 {
+        margin: 0;
+        font-size: 20px;
+    }
+    .temps > h2 {
+        font-size: 20px;
+    }
+    .smallDay .type {
+        position: absolute;
+        font-size: 10px;
+        bottom: 15px;
+        right:5px;
+    }
+    .smallDay.active {
+        border-color: white !important;
+        border-width: 3px;
+    }
+    .smallDay:hover {
+        cursor: pointer;
+    }
 }
 
 @media screen and (max-width: 667px) {
@@ -222,16 +295,18 @@ body, h1, h2 {
     background-color: black;
     color: #50a3a2;
 }
-.loading .message{
+
+.loading .message {
     position: relative;
-    top:35%;
+    top: 35%;
 }
-.loading h1{
+
+.loading h1 {
     font-size: 60px
 }
+
 .loader:before, .loader:after, .loader {
     color: #50a3a2;
-    
     left: 40px;
     border-radius: 50%;
     width: 2.5em;
@@ -243,10 +318,8 @@ body, h1, h2 {
 }
 
 .loader {
-
     font-size: 7px;
     margin: auto;
-     
     text-indent: -9999em;
     -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
