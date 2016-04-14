@@ -1,8 +1,20 @@
 var weatherAppControllers = angular.module('weatherAppControllers', []).
 controller('weatherController', ['$scope', '$window', '$log', 'ipApi', 'weatherWallpaper', 'loadController', 'apiService', function($scope, $window, $log, ipApi, weatherWallpaper, loadController, apiService) {
+    /*
+    Uses ip-api(ipApi service) and openweathermap(apiService) to extract and maintain weather data based on users current location or searched cities. 
+     */
+
+
+
     ipApi.getCurrentLocation(function(result) {
         $scope.setWeatherForLocation(result);
+    }, function (error){
+        //use error management to handle the error. 
     });
+    /**
+     * extract weather data from openweathermap api via apiService
+     * @param location:{lat:latitude, lon:longitude}
+     */
     $scope.setWeatherForLocation = function(location) {
         $scope.registerPending('setWeatherForLocation');
         apiService.queryForecast('', {
@@ -16,6 +28,11 @@ controller('weatherController', ['$scope', '$window', '$log', 'ipApi', 'weatherW
             $scope.registerError(error);
         });
     }
+    /**
+     * extract weather data from openweathermap api via apiService
+     * @param city:cityname
+     * 
+     */
     $scope.setWeatherForCity = function(city) {
         $scope.registerPending('setWeatherForCity')
         apiService.queryForecast(city, '', function(result) {
@@ -26,6 +43,8 @@ controller('weatherController', ['$scope', '$window', '$log', 'ipApi', 'weatherW
             $scope.registerError(error);
         });
     }
+
+
     $scope.selectedForecast = 0;
     $scope.setToday = function(index) {
         $scope.today = $scope.forecast[index];
@@ -44,6 +63,11 @@ controller('weatherController', ['$scope', '$window', '$log', 'ipApi', 'weatherW
         else return (c * 2) + 30;
     }
 }]).controller('page', ['$scope', '$log', '$window', function($scope, $log, $window) {
+    /*
+    this controller, manages the wallpaper image size by providing window dimension to image-frame via its (frameDimension) attribute.
+    image frame directive will take care of scale and crop to fit the image perfectly in the background. 
+     */
+
     $scope.forecastDimension = {}
     $scope.mainDimension = {}
     $scope.frameDimension = {}
@@ -52,7 +76,10 @@ controller('weatherController', ['$scope', '$window', '$log', 'ipApi', 'weatherW
         setFrameDimension();
         $scope.$apply();
     });
-
+    /**
+     * updates window dimensions into frameDimension
+     * frameDimension is used for image-frame directive
+     */
     function setFrameDimension() {
          
             $scope.frameDimension.width = angular.element($window).width();
