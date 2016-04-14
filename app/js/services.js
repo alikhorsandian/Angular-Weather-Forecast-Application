@@ -30,7 +30,7 @@ factory('apiService', ['$resource', '$log', function($resource, $log) {
          * gets todays weather data based on either location (lat,lon) or the cityName          
          * @param  {[type:string]} cityName         
          * @param  {type:{lat:latitude,lon:longitude}} location 
-         * @param  {function(result){}} callbackFunction [use a callback function to return the converted model]
+         * @param  {function(result){}} callbackFunction [use a callback function to return the model, check out the result object properties below]
          * @param  {function(error){}} callbackError    [use a callback fucntion to return the error data]
          * @result: {
             temp: ,
