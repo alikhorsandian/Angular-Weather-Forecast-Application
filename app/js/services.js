@@ -1,5 +1,5 @@
 var weatherAppServices = angular.module('weatherAppServices', ['ngResource']).
-factory('apiService', ['$resource', '$log', function($resource, $log) {
+factory('weatherService', ['$resource', '$log', function($resource, $log) {
     /*
     getting weather model from the server and convert it to the weather appmodel.
      */
@@ -43,7 +43,7 @@ factory('apiService', ['$resource', '$log', function($resource, $log) {
             city: 
         }                
          */
-        queryCity: function(cityName , location , callbackFunction, callbackError) {
+        currentWeather: function(cityName , location , callbackFunction, callbackError) {
             var result = {}
             var query = {}
             if (cityName != '') query = {
@@ -86,7 +86,7 @@ factory('apiService', ['$resource', '$log', function($resource, $log) {
             city: 
         },...]}                 
          */
-        queryForecast: function(cityName , location , callbackFunction, callbackError ) {
+        weatherForecast: function(cityName , location , callbackFunction, callbackError ) {
             var result = [];
             var query = {};
             if (cityName != '') query = {
@@ -116,7 +116,7 @@ factory('apiService', ['$resource', '$log', function($resource, $log) {
         }
     };
 }]).
-factory('ipApi', ['$resource', function($resource) {
+factory('ipService', ['$resource', function($resource) {
     var res = $resource('http://ip-api.com/json/');
     return {
         /**
