@@ -1,5 +1,5 @@
 var weatherAppControllers = angular.module('weatherAppControllers', []).
-controller('weatherController', ['$scope', '$window', '$log', 'ipApi', 'weatherWallpaper', 'loadController', 'apiService', function($scope, $window, $log, ipApi, weatherWallpaper, loadController, apiService) {
+controller('weatherController', ['$scope', '$window', '$log', 'ipService', 'weatherWallpaper', 'loadController', 'weatherService', function($scope, $window, $log, ipService, weatherWallpaper, loadController, weatherService) {
     /*
     Uses ip-api(ipApi service) and openweathermap(apiService) to extract and maintain weather data based on users current location or searched cities. 
      */
@@ -18,7 +18,7 @@ controller('weatherController', ['$scope', '$window', '$log', 'ipApi', 'weatherW
         }
       */
 
-    ipApi.getCurrentLocation(function(result) {
+    ipService.getCurrentLocation(function(result) {
         $scope.setWeatherForLocation(result);
     }, function (error){
         //use error management to handle the error. 
@@ -29,7 +29,7 @@ controller('weatherController', ['$scope', '$window', '$log', 'ipApi', 'weatherW
      */
     $scope.setWeatherForLocation = function(location) {
         $scope.registerPending('setWeatherForLocation');
-        apiService.queryForecast('', {
+        weatherService.weatherForecast('', {
             lat: location.lat,
             lon: location.lon
         }, function(result) {
@@ -47,7 +47,7 @@ controller('weatherController', ['$scope', '$window', '$log', 'ipApi', 'weatherW
      */
     $scope.setWeatherForCity = function(city) {
         $scope.registerPending('setWeatherForCity')
-        apiService.queryForecast(city, '', function(result) {
+        weatherService.weatherForecast(city, '', function(result) {
             $scope.forecast = result;
             $scope.setToday(0);
             $scope.setLoaded('setWeatherForCity');

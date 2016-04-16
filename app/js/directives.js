@@ -55,7 +55,7 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
         scope: {
             callback: '='
         },
-        controller: function($scope, $log, apiService) {
+        controller: function($scope, $log) {
             $scope.update = function() {
                 $scope.callback($scope.city);
             }
