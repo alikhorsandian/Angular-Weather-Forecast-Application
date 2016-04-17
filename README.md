@@ -2,10 +2,10 @@
 Sample weather forecast web application built with angularJS 1.5.
 
 ### Content
-* [Getting Started](#getting started)
-* [Employed APIs](#employed apis)
-* [Getting Started](#getting started)
-* [Code Modules](#code modules)
+* [Getting Started](#getting-started)
+* [Employed APIs](#employed-apis)
+* [Getting Started](#getting-started)
+* [Code Modules](#code-modules)
   * [Controllers](#controllers)
   * [Directives](#directives)
   * [Services](#services)
