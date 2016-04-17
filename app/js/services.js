@@ -53,7 +53,9 @@ factory('weatherService', ['$resource', '$log', function($resource, $log) {
                 lat: location.lat,
                 lon: location.lon
             }
+            
             res.currentWeather(query, function(data) {
+
                 result = {
                     temp: data.main.temp,
                     humidity: data.main.humidity,
@@ -62,7 +64,8 @@ factory('weatherService', ['$resource', '$log', function($resource, $log) {
                     windSpeed: data.wind.speed,
                     weatherID: data.weather[0].id,
                     date: (data.dt * 1000),
-                    city: data.name
+                    city: data.name,
+                    country: data.city.country
                 }
                 callbackFunction(result);
             }, function(error) {
@@ -97,6 +100,7 @@ factory('weatherService', ['$resource', '$log', function($resource, $log) {
                 lon: location.lon
             }
             res.weatherForecast(query, function(data) {
+             $log.log(data);
                 for (var i = 0; i < data.list.length; i++) {
                     result.push({
                         temp: data.list[i].temp.day,
@@ -106,7 +110,9 @@ factory('weatherService', ['$resource', '$log', function($resource, $log) {
                         date: (data.list[i].dt * 1000),
                         windSpeed: data.list[i].speed,
                         weatherID: data.list[i].weather[0].id,
-                        city: data.city.name
+                        description:data.list[i].weather[0].description,
+                        city: data.city.name,
+                        country: data.city.country
                     });
                 }
                 callbackFunction(result);
