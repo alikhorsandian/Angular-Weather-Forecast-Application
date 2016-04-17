@@ -25,6 +25,7 @@ controller('weatherController', ['$scope', '$window', '$log', 'ipService', 'weat
         $scope.setWeatherForLocation(result);
     }, function (error){
         //use error management to handle the error. 
+        $scope.registerError(error);
     });
     /**
      * extract weather data from openweathermap api via apiService
@@ -37,7 +38,7 @@ controller('weatherController', ['$scope', '$window', '$log', 'ipService', 'weat
             lon: location.lon
         }, function(result) {
             $scope.forecast = result;
-            $scope.setToday(0);
+            $scope.selectDay(0);
             $scope.registerLoaded();
         }, function(error) {
             $scope.registerError(error);
@@ -52,7 +53,7 @@ controller('weatherController', ['$scope', '$window', '$log', 'ipService', 'weat
         $scope.registerPending();
         weatherService.weatherForecast(city, '', function(result) {
             $scope.forecast = result;
-            $scope.setToday(0);
+            $scope.selectDay(0);
             $scope.registerLoaded();
         }, function(error) {
             $scope.registerError(error);
@@ -60,12 +61,13 @@ controller('weatherController', ['$scope', '$window', '$log', 'ipService', 'weat
     }
 
 
-    $scope.selectedForecast = 0;
-    $scope.setToday = function(index) {
-        $scope.today = $scope.forecast[index];
-        $scope.selectedForecast = index;
-        $scope.weatherWallpaper = weatherWallpaper($scope.today.weatherID);
+    $scope.weatherIndex=0;
+    $scope.selectDay = function(index) {
+     
+        $scope.selectedDay = $scope.forecast[index];
+        $scope.weatherIndex=index;
     }
+    
     $scope.isItC = true;
     $scope.convertToC = function() {
         $scope.isItC = true;

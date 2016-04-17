@@ -8,7 +8,7 @@
      
     
         <div class="focus" >
-            <div image-frame class = "frame" image-source="{{today.weatherID | weatherWallpaper}}" dimension="frameDimension" ></div>
+            <div image-frame class = "frame" image-source="{{selectedDay.weatherID | weatherWallpaper}}" dimension="frameDimension" ></div>
             
             <!-- navbar with search form -->
              <div class="nav">
@@ -27,14 +27,14 @@
                     <div class="row">
                         <div class="col-md-8 col-sm-6">
                             <h2>
-                                {{today.city}}, {{today.description}}
+                                {{selectedDay.city}}, {{selectedDay.description}}
                             </h2>
                             <h2>
-                                {{today.date |date:'EEE dd/MM/yyyy'}}
+                                {{selectedDay.date |date:'EEE dd/MM/yyyy'}}
                             </h2>
                         </div>
                         <div class="col-md-4 col-sm-6">
-                            <weather-panel is-c="isItC" weather="today">
+                            <weather-panel is-c="isItC" weather="selectedDay">
                             </weather-panel>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                         <div class="row">
                             <div class="slides">
                                 <div class="col-md-2 col-sm-2 noPadding" ng-repeat="day in forecast | limitTo:6:0">
-                                    <forecast-panel active="{{(selectedForecast==$index)?'true':''}}" is-c="isItC" ng-click="setToday($index)" weather="day">
+                                    <forecast-panel active="{{(weatherIndex==$index)?'true':''}}" is-c="isItC" ng-click="selectDay($index)" weather="day">
                                     </forecast-panel>
                                 </div>
                             </div>
