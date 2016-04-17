@@ -13,12 +13,15 @@ controller('weatherController', ['$scope', '$window', '$log', 'ipService', 'weat
             tempMax: ,
             windSpeed: ,
             weatherID: ,
+            description:,
             date: ,
-            city: 
+            city: ,
+            country:
         }
       */
-
+    $scope.registerPending();
     ipService.getCurrentLocation(function(result) {
+        $scope.registerLoaded();
         $scope.setWeatherForLocation(result);
     }, function (error){
         //use error management to handle the error. 
@@ -28,14 +31,14 @@ controller('weatherController', ['$scope', '$window', '$log', 'ipService', 'weat
      * @param location:{lat:latitude, lon:longitude}
      */
     $scope.setWeatherForLocation = function(location) {
-        $scope.registerPending('setWeatherForLocation');
+        $scope.registerPending();
         weatherService.weatherForecast('', {
             lat: location.lat,
             lon: location.lon
         }, function(result) {
             $scope.forecast = result;
             $scope.setToday(0);
-            $scope.setLoaded('setWeatherForLocation');
+            $scope.registerLoaded();
         }, function(error) {
             $scope.registerError(error);
         });
@@ -46,11 +49,11 @@ controller('weatherController', ['$scope', '$window', '$log', 'ipService', 'weat
      * 
      */
     $scope.setWeatherForCity = function(city) {
-        $scope.registerPending('setWeatherForCity')
+        $scope.registerPending();
         weatherService.weatherForecast(city, '', function(result) {
             $scope.forecast = result;
             $scope.setToday(0);
-            $scope.setLoaded('setWeatherForCity');
+            $scope.registerLoaded();
         }, function(error) {
             $scope.registerError(error);
         });
@@ -103,8 +106,10 @@ controller('weatherController', ['$scope', '$window', '$log', 'ipService', 'weat
         return loadController.status().isReady;
     }
 }]).controller('loadController', function($log, $scope) {
-    var modules = [];
-    $scope.isLoading = true;
+    
+    var pendingModules=0;
+    $scope.isLoading = false;
+
     $scope.Error = {
         status: false,
         message: ''
@@ -115,41 +120,17 @@ controller('weatherController', ['$scope', '$window', '$log', 'ipService', 'weat
             message: 'Error: ' + error.data.cod + ' check weather API key'
         }
     }
-    $scope.registerPending = function(name) {
-        modules.push({
-            name: name,
-            status: 'pending'
-        });
+    $scope.registerPending = function() {
+        pendingModules++;
         $scope.isLoading = true;
+        $log.log('pending: '+ pendingModules);
     }
-    $scope.setLoaded = function(name) {
-        for (var i = 0; i < modules.length; i++) {
-            if (modules[i].name === name) modules[i].status = 'loaded';
-        }
-        $scope.isLoading = !$scope.status().isReady;
+    $scope.registerLoaded = function() {
+         pendingModules--;
+         if(pendingModules===0)
+            $scope.isLoading=false;
+        $log.log('pending: '+ pendingModules);
     }
-    $scope.status = function() {
-        var notLoaded = [];
-        var isReady = true;
-        for (var i = 0; i < modules.length; i++) {
-            if (modules[i].status != 'loaded') {
-                notLoaded.push(modules[i].name);
-                isReady = false;
-            }
-        }
-        $log.log(modules);
-        return {
-            notloaded: notLoaded,
-            isReady: isReady
-        }
-    }
-    $scope.isModuleLoaded = function(name) {
-        var result = false;
-        for (var i = 0; i < modules.length; i++) {
-            if (modules[i].name === name)
-                if (modules[i].status === 'loaded') result = true;
-        }
-        $log.log(modules);
-        return result;
-    }
+   
+     
 });
