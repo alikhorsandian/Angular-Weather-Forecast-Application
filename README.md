@@ -19,7 +19,7 @@ Sample weather forecast web application built with AngularJS 1.5.
 You can find a demo [here](https://readmoreabout.me/projects/weatherForecast).-->
 ### Employed APIs:  
 * [OpenWeatherMap](http://openweathermap.org) to get weather data.
-* [ip-api](http://ip-api.com) to access user geolocation information (current locatin weather)
+* [ip-api](http://ip-api.com) to access user geolocation information (the weather for user's current location)
 * [Google maps javascript api](https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete)  
 
 ### Getting Started
@@ -41,10 +41,10 @@ $ npm start
 * loadController: Manages API loading process and shows the loading page during any client-server communication. 
 
 #### Directives
-* search-form: Has Google Maps API binded to it. It is an autocomplete input suggesting cities. 
+* search-form: Has Google Maps API bind to it. It is an autocomplete input suggesting cities. 
 * weather-panel: Present weather information in detail.
 * image-frame: Scale and crop image to properly fit into a given frame dimension. It maintains the original width/height ratio of the image.
-* forecast-panel: outlines weather infromation.
+* forecast-panel: outlines weather information.
 
 #### Services
 * weatherService: It queries the weather data from open weather map API using ngResource. The service convert open weather map data model to an object called **weatherForecastModel** with the following fields:
@@ -97,7 +97,7 @@ Here is an example of weatherWallpaper filter:
 `<img ng-src="{{weatherID | weatherWallpaper}}>"`
 
 ### Contribute
-All ideas and suggestions are welcome. 
+Ideas and suggestions are welcome. 
 
 
 
