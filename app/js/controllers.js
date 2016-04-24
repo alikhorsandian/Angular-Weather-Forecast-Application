@@ -1,5 +1,5 @@
 var weatherAppControllers = angular.module('weatherAppControllers', []).
-controller('weatherController', ['$scope', '$window', '$log', 'ipService', 'weatherWallpaper', 'loadController', 'weatherService', function($scope, $window, $log, ipService, weatherWallpaper, loadController, weatherService) {
+controller('weatherController', ['$scope', '$window', '$log', 'ipService', 'weatherService', function($scope, $window, $log, ipService, weatherService) {
     /*
     Uses ip-api(ipApi service) and openweathermap(apiService) to extract and maintain weather data based on users current location or searched cities. 
      */
@@ -102,10 +102,6 @@ controller('weatherController', ['$scope', '$window', '$log', 'ipService', 'weat
             $scope.frameDimension.width = angular.element($window).width();
             $scope.frameDimension.height = angular.element($window).height();
         
-    }
-}]).controller('loading', ['$scope', 'loadController', '$log', function($scope, loadController, $log) {
-    $scope.isReady = function() {
-        return loadController.status().isReady;
     }
 }]).controller('loadController', function($log, $scope) {
     

@@ -11,11 +11,11 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
             isItC: '=isC',
             active: '@'
         },
-        controller: function($scope, weatherIcon, $log) {
+        controller: function($scope, $log) {
             $scope.convert = function(c) {
                 return ($scope.isItC) ? c : (c * 2 + 30);
             }
-            $scope.weatherIcon = weatherIcon;
+            
             // $log.log($scope.active);
         }
     }
@@ -45,7 +45,7 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
             weatherInfo: '=weather',
             isItC: '=isC'
         },
-        controller: function($scope, weatherIcon, $log) {
+        controller: function($scope, $log) {
             $scope.setToC = function() {
                 $scope.isItC = true;
             }
@@ -55,7 +55,7 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
             $scope.convert = function(c) {
                 return ($scope.isItC) ? c : (c * 2 + 30);
             }
-            $scope.weatherIcon = weatherIcon;
+            
         }
     }
 }).directive('searchForm', function($log) {
@@ -159,15 +159,6 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
                     }
                 }
             });
-        }
-    }
-}).directive('loadingPage', function(loadController,$log) {
-    return {
-        restrict: 'E',
-        templateUrl: 'partials/loading-page.html',
-        link: function(scope, element, attr) {
-            
-             
         }
     }
 });
