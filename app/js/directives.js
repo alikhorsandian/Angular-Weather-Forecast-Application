@@ -19,6 +19,20 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
             // $log.log($scope.active);
         }
     }
+}).directive('weatherInfo',function (){
+    return {
+        restrict: 'E',
+        templateUrl: 'partials/weather-info.html',
+        require: '^weatherController'
+    }
+}).directive('loadingMessage',function (){
+    return {
+        restrict: 'E',
+        templateUrl: 'partials/loading-message.html',
+        scope:{
+            message: "@"
+        }
+    }
 }).directive('weatherPanel', function() {
     return {
         /*

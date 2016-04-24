@@ -19,19 +19,10 @@
 </head>
 <body>
 
-	<div class="loading" ng-show="isLoading">
-		<div class="message">
-		<h1>LOADING</h1>
-		<div class="loader"></div>
-		</div>
-	</div>
+	<loading-message message="LOADING" ng-show="isLoading">
+	</loading-message>
 
-	<div class="loading" ng-show="Error.status" ng-cloak>
-		<div class="message">
-		<h1>{{Error.message}}</h1>
-		<div class="loader"></div>
-		</div>
-	</div>
+	
 
  
 	<!-- <div class= "nav"></div> -->

@@ -25,14 +25,7 @@
             <div class="information" >
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-8 col-sm-6">
-                            <h2>
-                                {{selectedDay.city}}, {{selectedDay.description}}
-                            </h2>
-                            <h2>
-                                {{selectedDay.date |date:'EEE dd/MM/yyyy'}}
-                            </h2>
-                        </div>
+                        <weather-info class="col-md-8 col-sm-6"></weather-info>
                         <div class="col-md-4 col-sm-6">
                             <weather-panel is-c="isItC" weather="selectedDay">
                             </weather-panel>
