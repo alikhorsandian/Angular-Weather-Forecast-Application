@@ -26,7 +26,7 @@ You can find a demo [here](https://readmoreabout.me/projects/weatherForecast).--
 1. install node, npm and git
 2. run the following code on terminal
 ```
-$ git clone https://github.com/alikhorsandian/weatherForecast.git
+$ git clone https://github.com/alikhorsandian/Angular-Weather-Forecast-Application.git
 $ npm install
 $ npm start
 ```
