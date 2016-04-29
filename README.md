@@ -1,5 +1,5 @@
 ## Weather Forecast  
-Sample weather forecast web application built with AngularJS 1.5.
+Sample weather forecast web application built with AngularJS 1.5
 
 ![mainview](https://github.com/alikhorsandian/weatherForecast/blob/master/doc/img/mainview.png)
 
