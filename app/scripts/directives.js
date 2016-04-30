@@ -5,7 +5,7 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
          */
 
         restrict: 'E',
-        templateUrl: 'partials/forecast-panel.html',
+        templateUrl: 'views/forecast-panel.html',
         scope: {
             weatherInfo: '=weather',
             isItC: '=isC',
@@ -22,13 +22,13 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
 }).directive('weatherInfo',function (){
     return {
         restrict: 'E',
-        templateUrl: 'partials/weather-info.html',
+        templateUrl: 'views/weather-info.html',
         require: '^weatherController'
     }
 }).directive('loadingMessage',function (){
     return {
         restrict: 'E',
-        templateUrl: 'partials/loading-message.html',
+        templateUrl: 'views/loading-message.html',
         scope:{
             message: "@"
         }
@@ -40,7 +40,7 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
          */
 
         restrict: 'E',
-        templateUrl: 'partials/weather-panel.html',
+        templateUrl: 'views/weather-panel.html',
         scope: {
             weatherInfo: '=weather',
             isItC: '=isC'
@@ -65,7 +65,7 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
         this directive uses google maps autocomplete apis to suggest cities. 
          */
         restrict: 'E',
-        templateUrl: 'partials/search-form.html',
+        templateUrl: 'views/search-form.html',
         scope: {
             callback: '='
         },
@@ -105,7 +105,7 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
             dimension: '='
         },
         
-        templateUrl: 'partials/image-frame.html',
+        templateUrl: 'views/image-frame.html',
         link: function(scope, element, attrs) {
             scope.$watchGroup(['dimension.width', 'dimension.height'], function() {
                 scope.frameRatio = scope.dimension.width / scope.dimension.height;

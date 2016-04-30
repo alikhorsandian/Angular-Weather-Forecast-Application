@@ -1,12 +1,24 @@
 {
-    "name": "weatherForecast",
-    "description": "an angular project",
-    "version": "1.0.0",
-    "dependencies": {
-        "angular": "1.5.x",
-        "angular-resource": "1.5.x",
-        "angular-route": "1.5.x",
-        "jquery": "~2.1.1",
-        "bootstrap": "~3.1.1"
+  "name": "weather",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "^1.4.0",
+    "bootstrap": "^3.2.0",
+    "angular-resource": "^1.4.0",
+    "angular-route": "^1.4.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.4.0"
+  },
+  "appPath": "app",
+  "moduleName": "weatherApp",
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "less/bootstrap.less",
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
     }
+  }
 }
