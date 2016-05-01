@@ -40,7 +40,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="slides">
-                                <div class="col-md-2 col-sm-2 noPadding" ng-repeat="day in forecast | limitTo:6:0">
+                                <div class="col-md-2 col-sm-2 col-xs-2 noPadding" ng-repeat="day in forecast | limitTo:6:0">
                                     <forecast-panel active="{{(weatherIndex==$index)?'true':''}}" is-c="isItC" ng-click="selectDay($index)" weather="day">
                                     </forecast-panel>
                                 </div>

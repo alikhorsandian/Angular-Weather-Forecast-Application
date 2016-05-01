@@ -1,3 +1,4 @@
+"use strict";
 var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('forecastPanel', function() {
     return {
         /*
@@ -11,20 +12,20 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
             isItC: '=isC',
             active: '@'
         },
-        controller: function($scope, $log) {
+        controller: function($scope) {
             $scope.convert = function(c) {
                 return ($scope.isItC) ? c : (c * 2 + 30);
-            }
+            };
             
             // $log.log($scope.active);
         }
-    }
+    };
 }).directive('weatherInfo',function (){
     return {
         restrict: 'E',
         templateUrl: 'views/weather-info.html',
         require: '^weatherController'
-    }
+    };
 }).directive('loadingMessage',function (){
     return {
         restrict: 'E',
@@ -32,7 +33,7 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
         scope:{
             message: "@"
         }
-    }
+    };
 }).directive('weatherPanel', function() {
     return {
         /*
@@ -45,20 +46,20 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
             weatherInfo: '=weather',
             isItC: '=isC'
         },
-        controller: function($scope, $log) {
+        controller: function($scope) {
             $scope.setToC = function() {
                 $scope.isItC = true;
-            }
+            };
             $scope.setToF = function() {
                 $scope.isItC = false;
-            }
+            };
             $scope.convert = function(c) {
                 return ($scope.isItC) ? c : (c * 2 + 30);
-            }
+            };
             
         }
-    }
-}).directive('searchForm', function($log) {
+    };
+}).directive('searchForm', function() {
     return {
 
         /*
@@ -69,10 +70,10 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
         scope: {
             callback: '='
         },
-        controller: function($scope, $log) {
+        controller: function($scope) {
             $scope.update = function() {
                 $scope.callback($scope.city);
-            }
+            };
         },
         link: function(scope, element, attr) {
             var autocomplete = new google.maps.places.Autocomplete(element.find("input")[0]);
@@ -83,16 +84,16 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
                 var selectedCountry = '';
                 if (!place.geometry) {
                     selectedCity = scope.city;
-                } else
+                } else{
                     for (var i = 0; i < place.address_components.length; i++) {
-                        if (place.address_components[i].types[0] === 'locality') selectedCity = place.address_components[i].short_name;
-                        else if (place.address_components[i].types[0] === 'country') selectedCountry = place.address_components[i].short_name;
-                    }
+                        if (place.address_components[i].types[0] === 'locality') {selectedCity = place.address_components[i].short_name;}
+                        else if (place.address_components[i].types[0] === 'country') {selectedCountry = place.address_components[i].short_name;}
+                    }}
                 scope.city = selectedCity;
                 scope.callback(selectedCity + ',' + selectedCountry);
             });
         }
-    }
+    };
 }).directive('imageFrame', function() {
     return {
 
@@ -115,8 +116,8 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
                 });
             });
         }
-    }
-}).directive('adjustImage', function($log,$window) {
+    };
+}).directive('adjustImage', function($window) {
     return {
         /*
         gets origial image dimension. creates image ratio and compare it with its frame ratio to resize the image to fit perfectly in the
@@ -132,18 +133,18 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
             newImg.onload = function() {
                 scope.imgRatio = newImg.width / newImg.height;
                 scope.$apply();
-            }
+            };
             scope.$watch('imageSource',function(){
                 if(scope.imageSource)
-                    newImg.src = scope.imageSource;
+                    {newImg.src = scope.imageSource;}
             });
             ///end 
          
             
             //scaling the image to fit it into its frame (img-frame)
             scope.$watchGroup(['imgRatio', 'frameRatio'], function() {
-                $log.log('im here: ' + scope.imgRatio + " " + scope.frameRatio+' '+angular.element($window).width());
-                if (scope.imgRatio != 0) {
+                // $log.log('im here: ' + scope.imgRatio + " " + scope.frameRatio+' '+angular.element($window).width());
+                if (scope.imgRatio !== 0) {
                     
                     if (scope.imgRatio < scope.frameRatio) {
 
@@ -160,5 +161,5 @@ var weatherAppDirectives=angular.module('weatherAppDirectives',[]).directive('fo
                 }
             });
         }
-    }
+    };
 });

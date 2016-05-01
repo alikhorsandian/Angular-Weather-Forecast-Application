@@ -1,3 +1,4 @@
+"use strict";
 var weatherAppFilters = angular.module('weatherAppFilters',[])
 .filter('weatherIcon',function(){
 	return function(weatherId){

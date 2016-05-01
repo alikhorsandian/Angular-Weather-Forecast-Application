@@ -1,23 +1,24 @@
 <div class="today">
-    <img alt="Image" class="img-responsive" height="80px"  ng-src="{{weatherInfo.weatherID | weatherIcon}}" width="92px">
-        <h1>           
-            {{convert(weatherInfo.temp) | number:0 }}
-        </h1>
-        <span class="tempC" ng-class="{active:isItC}" ng-click="setToC()">
-            °C
-        </span>
-        |
-        <span class="tempF" ng-class="{active:!isItC}" ng-click="setToF()">
-            °F
-        </span>
+    <img alt="Image" class="img-responsive" height="80px"  ng-src="{{ weatherInfo.weatherID | weatherIcon }}" width="92px"/>
+    <h1>
+        {{ convert(weatherInfo.temp) | number:0 }}
+    </h1>
+    <span class="tempC" ng-class="{active:isItC}" ng-click="setToC()">
+        °C
+    </span>
+    |
+    <span class="tempF" ng-class="{active:!isItC}" ng-click="setToF()">
+        °F
+    </span>
+    <div class="landscapeHide">
         <h2>
-            wind: {{weatherInfo.windSpeed}} km/h
+            wind: {{ weatherInfo.windSpeed }} km/h
         </h2>
         <h2>
-            Humidity: {{weatherInfo.humidity}}%
+            Humidity: {{ weatherInfo.humidity }}%
         </h2>
         <h2>
-            Min: {{convert(weatherInfo.tempMin) | number:0}}
+            Min: {{ convert(weatherInfo.tempMin) | number:0 }}
             <span class="type" ng-show="isItC">
                 °C
             </span>
@@ -26,7 +27,7 @@
             </span>
         </h2>
         <h2>
-            Max: {{convert(weatherInfo.tempMax) | number:0}}
+            Max: {{ convert(weatherInfo.tempMax) | number:0 }}
             <span class="type" ng-show="isItC">
                 °C
             </span>
@@ -34,5 +35,5 @@
                 °F
             </span>
         </h2>
-    </img>
+    </div>
 </div>

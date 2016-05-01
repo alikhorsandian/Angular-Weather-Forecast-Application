@@ -1,5 +1,6 @@
+"use strict";
 var weatherAppServices = angular.module('weatherAppServices', ['ngResource']).
-factory('weatherService', ['$resource', '$log', function($resource, $log) {
+factory('weatherService', ['$resource', function($resource) {
     /*
     getting weather model from the server and convert it to the weather appmodel.
      */
@@ -100,7 +101,7 @@ factory('weatherService', ['$resource', '$log', function($resource, $log) {
                 lon: location.lon
             }
             res.weatherForecast(query, function(data) {
-             $log.log(data);
+             // $log.log(data);
                 for (var i = 0; i < data.list.length; i++) {
                     result.push({
                         temp: data.list[i].temp.day,
