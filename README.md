@@ -4,7 +4,6 @@ Sample weather forecast web application built with AngularJS 1.5.
 ![mainview](https://github.com/alikhorsandian/weatherForecast/blob/master/doc/img/mainview.png)
 
 ### Contents:
-* [Getting Started](#getting-started)
 * [Demo](#demo)
 * [Employed APIs](#employed-apis)
 * [Getting Started](#getting-started)
