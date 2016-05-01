@@ -27,7 +27,11 @@ You can find a demo [here](https://readmoreabout.me/projects/weatherForecast).--
 2. run the following code on terminal
 ```
 $ git clone https://github.com/alikhorsandian/Angular-Weather-Forecast-Application.git
-$ grunt
+$ grunt serve
+```
+To concatenate and minify css and js files for distribution use
+```
+$ grunt serve:dist
 ```
 <ol start="3">
   <li>Http-Server is created using puer. Puer opens a page on your default browser.</li>
