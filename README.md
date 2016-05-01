@@ -17,7 +17,7 @@ Sample weather forecast web application built with AngularJS 1.5.
 
 
 ### Demo
-Click [here](readmoreabout.me/weatherappdist) to try out the demo.
+Click [here](http://readmoreabout.me/weatherappdist) to try out the demo.
 ### Employed APIs:  
 * [OpenWeatherMap](http://openweathermap.org) to get weather data.
 * [ip-api](http://ip-api.com) to access user geolocation information (the weather for user's current location)
