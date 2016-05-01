@@ -223,110 +223,8 @@ body, h1, h2 {
     padding: 0 !important;
 }
 
-@media screen and (max-width:990px) {
-    .forecast {
-        min-height: 150px;
-    }
-    .focus .frame {
-        /*min-height: 650px;*/
-    }
-    .smallDay {
-        height: 130px;
-        background-color: black;
-        color: white;
-        text-align: center;
-        padding: 5px 0px 0px 0px;
-        border-color: grey;
-        border-style: solid;
-        border-width: 1px;
-    }
-    .smallDay img {
-        width: 42px;
-        margin: auto;
-    }
-    .smallDay .temps {
-        font-size: 5px; 
-        margin-bottom: 10px;
-        position: relative;
-        width: 50px;
-        margin: auto;
-    }
-    .smallDay > h2 {
-        margin: 0;
-        font-size: 20px;
-    }
-    .temps > h2 {
-        font-size: 20px;
-    }
-    .smallDay .type {
-        position: absolute;
-        font-size: 10px;
-        bottom: 15px;
-        right:5px;
-    }
-    .smallDay.active {
-        border-color: white !important;
-        border-width: 3px;
-    }
-    .smallDay:hover {
-        cursor: pointer;
-    }
-}
 
-@media screen and (max-width: 768px) {
-    weather-info h2{
-        margin-left: 20px;
-    
-    }
-    .detailedInfo{
-        display: none;
-    }
-    .information{
-        top:30px;
 
-    }
-    .smallDay{
-        height: 80px;
-        
-        
-
-    }
-    
-    .forecast{
-        min-height: 100px !important;
-        
-        
-        /*padding:10;*/
-        
-        
-    }
-
-    /*.main {
-        display: none;
-    }
-    .mobile {
-        display: inline;
-    }*/
-}
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 736px) 
-and (orientation : landscape) {
-    
-    weather-info{
-        float:left;
-    }
-    .information{
-        margin-top:10px;
-        padding-top:10px;
-    }
-    .landscapeHide{
-        display: none;
-    }
-    .today{
-        height:150px;
-    }
-}
 .today .active {
     font-weight: bold;
     font-size: 16px;
@@ -407,3 +305,133 @@ and (orientation : landscape) {
         box-shadow: 0 2.5em 0 0 #50a3a2;
     }
 }
+
+
+
+@media screen and (max-width:990px) {
+    .forecast {
+        min-height: 150px;
+    }
+    .focus .frame {
+        /*min-height: 650px;*/
+    }
+    .smallDay {
+        height: 130px;
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 5px 0px 0px 0px;
+        border-color: grey;
+        border-style: solid;
+        border-width: 1px;
+    }
+    .smallDay img {
+        width: 42px;
+        margin: auto;
+    }
+    .smallDay .temps {
+        font-size: 5px; 
+        margin-bottom: 10px;
+        position: relative;
+        width: 50px;
+        margin: auto;
+    }
+    .smallDay > h2 {
+        margin: 0;
+        font-size: 20px;
+    }
+    .temps > h2 {
+        font-size: 20px;
+    }
+    .smallDay .type {
+        position: absolute;
+        font-size: 10px;
+        bottom: 15px;
+        right:5px;
+    }
+    .smallDay.active {
+        border-color: white !important;
+        border-width: 3px;
+    }
+    .smallDay:hover {
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 766px) {
+    weather-info h2{
+        margin-left: 20px;
+    
+    }
+    .detailedInfo{
+        display: none;
+    }
+    .information{
+        top:30px;
+
+    }
+    .smallDay{
+        height: 80px;
+        
+        
+
+    }
+    
+    .forecast{
+        min-height: 100px !important;
+        
+        
+        /*padding:10;*/
+        
+        
+    }
+
+    /*.main {
+        display: none;
+    }
+    .mobile {
+        display: inline;
+    }*/
+}
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 736px) 
+and (orientation : landscape) {
+
+    weather-info{
+        float:left;
+    }
+    .information{
+        margin-top:10px;
+        padding-top:10px;
+    }
+    .landscapeHide{
+        display: none;
+    }
+    .today{
+        height:150px;
+    }
+}
+
+@media only screen 
+
+and (max-device-width : 568px) 
+and (orientation : portrait) { 
+    .today{
+        top:30px;
+        height:270px;
+    }
+    .today h1{
+        font-size:35px;
+    }
+    .today h2{
+        font-size: 26px;
+        margin-top:2px;
+    }
+    weather-info{
+        display:none;
+    }
+
+}
+
+
